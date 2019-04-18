@@ -16,5 +16,6 @@ class Solution():
         return  maxsub
 
 obj =  Solution()
+
 nums = [-2 , 6, -1, 5, 4, -7, 2, 5]
 print(obj.maxsub(nums))
