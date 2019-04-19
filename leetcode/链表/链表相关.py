@@ -149,16 +149,37 @@ class Solution(object):
                 node = node.next
         return pre.next
 
+    #147--对链表进行插入排序
+    def insertionSortList(self, head):
+        if not head or not head.next:
+            return head
+        pre = ListNode("x")
+        pre.next = head
+        cur = head
+        pp = pre
+        while cur:
+            last = cur.next
+            if last and last.val < cur.val:
+                while pp.next and pp.next.val < last.val:
+                    pp = pp.next
+                tmp = pp.next
+                pp.next = last
+                cur.next = last.next
+                last.next = tmp
+                pp = pre
+            else:
+                cur = last
+        return pre.next
 
 obj = Solution()
-head = ListNode(1)
+head = ListNode(4)
 a = head.next = ListNode(2)
-b = a.next = ListNode(3)
+b = a.next = ListNode(1)
 c = b.next = ListNode(3)
-d = c.next = ListNode(4)
-e = d.next = ListNode(4)
-f = e.next = ListNode(5)
+# d = c.next = ListNode(4)
+# e = d.next = ListNode(4)
+# f = e.next = ListNode(5)
 
 obj.printLinkList(head)
-node = obj.deleteDuplicates(head)
+node = obj.insertionSortList(head)
 obj.printLinkList(node)
